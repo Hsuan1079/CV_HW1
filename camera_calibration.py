@@ -18,7 +18,7 @@ objpoints = [] # 3d points in real world space
 imgpoints = [] # 2d points in image plane.
 
 # Make a list of calibration images
-images = glob.glob('data/*.jpg')
+images = glob.glob('data2/*.jpg')
 
 # Step through the list and search for chessboard corners
 print('Start finding chessboard corners...')
