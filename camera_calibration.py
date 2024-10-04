@@ -18,7 +18,8 @@ objpoints = [] # 3d points in real world space
 imgpoints = [] # 2d points in image plane.
 
 # Make a list of calibration images
-images = glob.glob('data/*.jpg')
+# images = glob.glob('data/*.jpg')
+images = glob.glob('ours_data/*.jpg')
 
 # Step through the list and search for chessboard corners
 print('Start finding chessboard corners...')
@@ -39,6 +40,8 @@ for idx, fname in enumerate(images):
         # Draw and display the corners
         cv2.drawChessboardCorners(img, (corner_x,corner_y), corners, ret)
         plt.imshow(img)
+    elif ret == False:
+        print('cannot find the chessboard corners of',fname)
 
 
 #######################################################################################################
@@ -145,11 +148,11 @@ for i, H in enumerate(Hi):
     rotation_matrix = np.column_stack((r1, r2, r3)) 
     extrinsics_find[i] = np.concatenate((cv2.Rodrigues(rotation_matrix)[0].reshape(1,3), t.reshape(1,3)), axis=1).reshape(6)
 
-print('Extrinsics matrix we find:')
-print(extrinsics_find)
-print("-----------------")
-print('Extrinsics matrix from cv2:')
-print(extrinsics)
+# print('Extrinsics matrix we find:')
+# print(extrinsics_find)
+# print("-----------------")
+# print('Extrinsics matrix from cv2:')
+# print(extrinsics)
 extrinsics = extrinsics_find
 
 # show the camera extrinsics
