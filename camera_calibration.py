@@ -28,17 +28,19 @@ for idx, fname in enumerate(images):
     plt.imshow(gray) #顯示灰階圖片
 
     #Find the chessboard corners
-    print('find the chessboard corners of',fname)
     ret, corners = cv2.findChessboardCorners(gray, (corner_x,corner_y), None) #ret是一個bool值，corners是一個2D座標的矩陣
 
     # If found, add object points, image points
     if ret == True:
+        print('find the chessboard corners of',fname)
         objpoints.append(objp)
         imgpoints.append(corners)
 
         # Draw and display the corners
         cv2.drawChessboardCorners(img, (corner_x,corner_y), corners, ret)
         plt.imshow(img)
+    else:
+        print('cannot find the chessboard corners of',fname)
 
 
 #######################################################################################################
