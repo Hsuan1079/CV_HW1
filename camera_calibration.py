@@ -148,7 +148,8 @@ for i, H in enumerate(Hi):
     extrinsics_find[i] = np.concatenate((cv2.Rodrigues(rotation_matrix)[0].reshape(1,3), t.reshape(1,3)), axis=1).reshape(6)
 
 print('Extrinsics matrix we find:')
-print(extrinsics_find)
+formatted_output = np.array2string(extrinsics_find, precision=8, floatmode='fixed', suppress_small=True)
+print(formatted_output)
 print("-----------------")
 print('Extrinsics matrix from cv2:')
 print(extrinsics)
