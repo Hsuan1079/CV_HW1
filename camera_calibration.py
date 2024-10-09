@@ -18,7 +18,7 @@ objpoints = [] # 3d points in real world space
 imgpoints = [] # 2d points in image plane.
 
 # Make a list of calibration images
-images = glob.glob('data2/*.jpg')
+images = glob.glob('data3/*.jpg')
 
 # Step through the list and search for chessboard corners
 print('Start finding chessboard corners...')
@@ -152,8 +152,9 @@ formatted_output = np.array2string(extrinsics_find, precision=8, floatmode='fixe
 print(formatted_output)
 print("-----------------")
 print('Extrinsics matrix from cv2:')
-print(extrinsics)
-extrinsics = extrinsics_find
+formatted_output = np.array2string(extrinsics, precision=8, floatmode='fixed', suppress_small=True)
+print(formatted_output)
+# extrinsics = extrinsics_find
 
 # show the camera extrinsics
 print('Show the camera extrinsics')
